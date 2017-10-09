@@ -10,9 +10,15 @@ needed.libraries <- function() {
       source("predict.R")
 }
 
-neural_net <- function(x = x, y = y) {
+neural_net <- function(x = x, y = y, hidden_layer_size = 25) {
    
       # Load need functions 
       needed.libraries() 
+      
+      # Set initial hyperparameters 
+      input_layer_size <- ncol(x)
+      num_labels <- length(unique(y))
+      
+      
       
 }
