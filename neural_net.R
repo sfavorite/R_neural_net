@@ -13,6 +13,6 @@ needed.libraries <- function() {
 neural_net <- function(x = x, y = y) {
    
       # Load need functions 
-      needed.ibraries() 
+      needed.libraries() 
       
 }
