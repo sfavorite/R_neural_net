@@ -10,7 +10,7 @@ needed.libraries <- function() {
       source("predict.R")
 }
 
-neural_net <- function(x = x, y = y, hidden_layer_size = 25) {
+neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
    
       # Load need functions 
       needed.libraries() 
@@ -38,7 +38,7 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25) {
       
       # There are lots of different options for optim
       # Some different configs are commented out...please see ?optim() for more information 
-      ctrl <- list(maxit=100, type=1)
+      ctrl <- list(maxit=100, type=1, trace = TRUE)
       #ctrl <- list(maxit=100)
       #theta_optim <- optim(par=initial_nn_params, fn=costF, method="CG",  gr=grad, control = ctrl)
       theta_optim <- optim(par=initial_nn_params, fn=costF, method="BFGS",  gr=grad, control = ctrl)
@@ -48,5 +48,8 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25) {
       nn_params <- theta_optim$par
       Theta1 <- matrix(nn_params[1:(hidden_layer_size * ( input_layer_size + 1))], nrow=hidden_layer_size, ncol=input_layer_size+1)
       Theta2 <- matrix(nn_params[1+(hidden_layer_size * ( input_layer_size + 1)):(length(nn_params)-1)], nrow=num_labels, ncol=hidden_layer_size+1)
+      
+      #print(nn_params)
+      return(list(J = theta_optim$value, counts = theta_optim$counts, message = theta_optim$message))
       
 }
