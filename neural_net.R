@@ -53,3 +53,8 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       return(list(J = theta_optim$value, counts = theta_optim$counts, message = theta_optim$message))
       
 }
+
+
+predict <- function() {
+      
+}
