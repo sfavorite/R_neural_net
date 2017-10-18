@@ -11,9 +11,6 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       source("nnGrad.R")
       #source("predict.R")
       
-      # Load need functions 
-      needed.libraries() 
-      
       # Set initial hyperparameters 
       input_layer_size <- ncol(x)
       num_labels <- length(unique(y))
