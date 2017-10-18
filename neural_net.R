@@ -51,7 +51,7 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       #print(nn_params)
       
       message = theta_optim$message
-      return(J = theta_optim$value, theta_optim)
+      return (list(J = theta_optim$value, theta_optim))
       
 }
 
