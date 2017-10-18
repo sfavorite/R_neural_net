@@ -11,6 +11,11 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       source("nnGrad.R")
       source("predict.R")
       
+      
+      # Store the levels to convert back from numeric  
+      y_levels <-levels(iris$Species)
+      
+      
       # Set initial hyperparameters 
       input_layer_size <- ncol(x)
       num_labels <- length(unique(y))
@@ -49,7 +54,7 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       #print(nn_params)
       
       message = theta_optim$message
-      return (list(J = theta_optim$value, Theta1 = Theta1, Theta2 = Theta2, counts = theta_optim$counts, convergence = theta_optim$convergence, message = theta_optim$message))
+      return (list(J = theta_optim$value, Theta1 = Theta1, Theta2 = Theta2, counts = theta_optim$counts, convergence = theta_optim$convergence, message = theta_optim$message, categories = y_levels))
       
 }
 
@@ -60,4 +65,9 @@ predict <- function(model, x) {
       Theta2 <- model$Theta2 
       
       p <- nnPredict(Theta1, Theta2, x)
+      
+      # Convert back to factor
+      predictions <- factor(p, labels = model$categories)
+      predictions
+      
 }
