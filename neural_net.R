@@ -9,7 +9,7 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       source("nnCost.R")
       source("logistic_functions.R")
       source("nnGrad.R")
-      #source("predict.R")
+      source("predict.R")
       
       # Set initial hyperparameters 
       input_layer_size <- ncol(x)
@@ -29,6 +29,7 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       # Pre-specify the procedures named parameters and use the return as the new procedure
       # We will use this in the optim() function
       lambda <- 2
+      
       costF <- Curry(nnCost, input_layer_size=input_layer_size, hidden_layer_size=hidden_layer_size, num_labels=num_labels, x=x, y=y, lambda=lambda)
       grad <- Curry(nnGrad, input_layer_size=input_layer_size, hidden_layer_size=hidden_layer_size, num_labels=num_labels, x=x, y=y, lambda=lambda)
       
@@ -53,6 +54,10 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
 }
 
 
-predict <- function() {
+predict <- function(model, x) {
       
+      Theta1 <- model$Theta1
+      Theta2 <- model$Theta2 
+      
+      p <- nnPredict(Theta1, Theta2, x)
 }
