@@ -1,17 +1,16 @@
 # Neural Network using back propagation 
 
-needed.libraries <- function() {
+
+neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
+      
       # functional will provide our optimization function: optim()  
       library(functional)
       source("randInitialWeights.R")
       source("nnCost.R")
       source("logistic_functions.R")
       source("nnGrad.R")
-      source("predict.R")
-}
-
-neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
-   
+      #source("predict.R")
+      
       # Load need functions 
       needed.libraries() 
       
@@ -50,7 +49,9 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       Theta2 <- matrix(nn_params[1+(hidden_layer_size * ( input_layer_size + 1)):(length(nn_params)-1)], nrow=num_labels, ncol=hidden_layer_size+1)
       
       #print(nn_params)
-      return(list(J = theta_optim$value, counts = theta_optim$counts, message = theta_optim$message))
+      
+      message = theta_optim$message
+      return(J = theta_optim$value, theta_optim)
       
 }
 
