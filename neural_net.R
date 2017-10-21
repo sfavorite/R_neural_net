@@ -11,6 +11,8 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       source("nnGrad.R")
       source("predict.R")
       
+      # Check data types and coerce if possible 
+      x <- convert_data(x)
       
       # Store the levels to convert back from numeric  
       y_levels <-levels(iris$Species)
@@ -70,4 +72,11 @@ predict <- function(model, x) {
       predictions <- factor(p, labels = model$categories)
       predictions
       
+}
+
+convert_data <- function(x) {
+      
+      if (is.list(x)) {
+            x <- as.matrix(x)
+      }
 }
