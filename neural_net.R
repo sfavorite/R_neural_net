@@ -15,7 +15,7 @@ neural_net <- function(x = x, y = y, hidden_layer_size = 25, trace=TRUE) {
       x <- convert_data(x)
       
       # Store the levels to convert back from numeric  
-      y_levels <-levels(y)
+      y_levels <-levels(as.factor(y))
       
       
       # Set initial hyperparameters 
