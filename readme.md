@@ -7,6 +7,10 @@ The general framework of the software is based on the work of Andrew Ng and the 
 
 I have tested this software using the Iris and [MNIST database](http://yann.lecun.com/exdb/mnist/) of handwritten digits. The Iris dataset comes with R and you can get the MNIST data I used [here](https://github.com/sfavorite/neural_net_hand_written_digits/blob/master/ex4data.RData).
 
+### Iris example 
+
+An example of using this neural net with the Iris Data set that is included with the R system. 
+
 
 ## Version Info
 
